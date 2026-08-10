@@ -14,7 +14,7 @@ def dailyTemperatures(self, t):
     return res
 
 
-# 739. Daily Temperatures
+# Method 2
 def dailyTemperatures(self, temperatures):
     n = len(temperatures)
 
@@ -31,4 +31,24 @@ def dailyTemperatures(self, temperatures):
 
     return res
 
+# 901. Online Stock Span
+
+class StockSpanner:
+
+    def __init__(self):
+        # The stack will store tuples of (price, span)
+        self.stack = []
+
+    def next(self, price: int) -> int:
+        # Each day initially has a span of at least 1 (itself)
+        span = 1
+        
+        # Pop elements from the stack while the top price is <= current price
+        while self.stack and self.stack[-1][0] <= price:
+            span += self.stack.pop()[1]
+            
+        # Push the current price and its calculated span onto the stack
+        self.stack.append((price, span))
+        
+        return span
 
