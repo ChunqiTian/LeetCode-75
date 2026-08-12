@@ -5,7 +5,7 @@ class Solution(object):
         for j in range(len(nums)):
             if nums[j]!=0: nums[i]=nums[j]
             i += 1
-        nums[i:] = [0] * (len(nums)-1)
+        nums[i:] = [0] * (len(nums)-i)
 
 # 392. Is Subsequence
 class Solution(object):
