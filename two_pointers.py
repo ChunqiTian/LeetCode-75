@@ -29,6 +29,27 @@ class Solution(object):
                 j += 1
         return res
 
+# Method 2: Optimal solution
+class Solution(object):
+    def maxArea(self, height):
+        res = 0
+        left = 0
+        right = len(height) - 1
+        
+        while left < right:
+            # Calculate the current container area
+            area = (right - left) * min(height[left], height[right])
+            res = max(res, area)
+            
+            # Move the pointer that points to the shorter line
+            if height[left] < height[right]:
+                left += 1
+            else:
+                right -= 1
+                
+        return res
+
+
 # 1679. Max Number of K-Sum Pairs
 # Method1 - My version: O(n^2), O(1)
 class Solution(object):
